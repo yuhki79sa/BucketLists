@@ -16,11 +16,36 @@ class PostController extends Controller
     }
     
     public function post(Request $request){
+        
         $post = new post;
         $post->todo = $request['todo'];
         $post->user_id = auth::id();
         $post->save();
         
-        return redirect('/latest');
+        return redirect('/bucketlist');
+    }
+    
+    public function done(Post $post){
+        
+        $post->isDone = true;
+        $post->save();
+        
+        return redirect('/bucketlist');
+    }
+    
+    public function bucketlist(){
+        
+        $user_id = auth::id();
+        $posts = Post::where('user_id', $user_id)->where('isDone', false)->get();
+        
+        return view('posts.bucketlist', compact('posts'));
+    }
+    
+    public function achievement(){
+        
+        $user_id = auth::id();
+        $posts = Post::where('user_id', $user_id)->where('isDone', true)->get();
+        
+        return view('posts.achievement', compact('posts'));
     }
 }

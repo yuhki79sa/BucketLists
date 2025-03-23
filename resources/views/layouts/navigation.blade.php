@@ -12,13 +12,17 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                   <x-nav-link :href="route('latest')" :active="request()->routeIs('latest')">
+                    {{ __('Bucket Lists') }}
                     </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('latest')" :active="request()->routeIs('latest')">
-                        {{ __('最新') }}
+                    {{ __('最新') }}
+                    </x-nav-link>
+                     <x-nav-link :href="route('bucketlist')" :active="request()->routeIs('bucketlist')">
+                    {{ __('やりたいことリスト') }}
+                    </x-nav-link>
+                     <x-nav-link :href="route('achievement')" :active="request()->routeIs('achievement')">
+                    {{ __('達成リスト') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -74,11 +78,6 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('latest')" :active="request()->routeIs('latest')">
-                {{ __('最新') }}
             </x-responsive-nav-link>
         </div>
 
