@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function latest(){
         
-        $posts = Post::all();
+        $posts = Post::paginate(2);
         
         return view('posts.latest', compact('posts'));
     }
@@ -36,7 +36,7 @@ class PostController extends Controller
     public function bucketlist(){
         
         $user_id = auth::id();
-        $posts = Post::where('user_id', $user_id)->where('isDone', false)->get();
+        $posts = Post::where('user_id', $user_id)->where('isDone', false)->paginate(5);
         
         return view('posts.bucketlist', compact('posts'));
     }
@@ -44,7 +44,7 @@ class PostController extends Controller
     public function achievement(){
         
         $user_id = auth::id();
-        $posts = Post::where('user_id', $user_id)->where('isDone', true)->get();
+        $posts = Post::where('user_id', $user_id)->where('isDone', true)->paginate(2);
         
         return view('posts.achievement', compact('posts'));
     }
