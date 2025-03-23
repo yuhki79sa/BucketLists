@@ -25,6 +25,12 @@ Route::get('/latest', [PostController::class, 'latest'])->name('latest');
 
 Route::post('/post', [PostController::class, 'post']);
 
+Route::patch('/bucketlist/{post}/done', [PostController::class, 'done'])->name('done');
+
+Route::get('/bucketlist', [PostController::class, 'bucketlist'])->name('bucketlist');
+
+Route::get('/achievement', [PostController::class, 'achievement'])->name('achievement');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
