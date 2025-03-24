@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,8 @@ Route::patch('/bucketlist/{post}/done', [PostController::class, 'done'])->name('
 Route::get('/bucketlist', [PostController::class, 'bucketlist'])->name('bucketlist');
 
 Route::get('/achievement', [PostController::class, 'achievement'])->name('achievement');
+
+Route::post('/post/like', [LikeController::class, 'likePost']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
