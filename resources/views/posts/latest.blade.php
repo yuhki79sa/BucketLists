@@ -9,6 +9,7 @@
             <i class="fa-regular fa-thumbs-up like-button liked" id="{{$post->id}}"></i>
             @endif
             <p>{{$post->likes->count()}}</p>
+            <a href = "/latest/{{ $post->id }}/show">詳細</a>
         </div>
     </div>
     @endforeach

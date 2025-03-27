@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,14 @@ Route::get('/bucketlist', [PostController::class, 'bucketlist'])->name('bucketli
 Route::get('/achievement', [PostController::class, 'achievement'])->name('achievement');
 
 Route::post('/post/like', [LikeController::class, 'likePost']);
+
+Route::get('/achievement/{post}/comment', [CommentController::class, 'comment']);
+
+Route::post('/achievement/{post}/save', [CommentController::class, 'save']);
+
+Route::get('/achievement/{post}/show', [CommentController::class, 'show']);
+
+Route::get('/latest/{post}/show', [PostController::class, 'show']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

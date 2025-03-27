@@ -49,4 +49,10 @@ class PostController extends Controller
         
         return view('posts.achievement', compact('posts'));
     }
+    
+    public function show(Post $post){
+        
+        $comments = $post->comments;
+        return view('posts.show', compact('comments', 'post'));
+    }
 }
