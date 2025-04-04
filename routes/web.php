@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ChoiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,10 @@ Route::post('/achievement/{post}/save', [CommentController::class, 'save']);
 Route::get('/achievement/{post}/show', [CommentController::class, 'show']);
 
 Route::get('/latest/{post}/show', [PostController::class, 'show']);
+
+Route::get('post/{post}/evaluate', [ChoiceController::class, 'show']);
+
+Route::post('post/{post}/evaluate/save', [ChoiceController::class, 'save']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

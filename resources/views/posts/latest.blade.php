@@ -10,6 +10,20 @@
             @endif
             <p>{{$post->likes->count()}}</p>
             <a href = "/latest/{{ $post->id }}/show">詳細</a>
+            <a href = "/post/{{ $post->id }}/evaluate">評価する</a>
+        </div>
+        <div>
+            @if( $post->choices->isEmpty() )
+            <div>やってみたい0%</div>
+            <div>やってみたくない0%</div>
+            <div>やった0%</div>
+            <div>特になし0%</div>
+            @else
+            <div>やってみたい{{ round($post->choices->where('choiceCategory_id', 1)->count() / $post->choices->count(), 2)*100}}%</div>
+            <div>やってみたくない{{ round($post->choices->where('choiceCategory_id', 2)->count() / $post->choices->count(), 2)*100}}%</div>
+            <div>やった{{ round($post->choices->where('choiceCategory_id', 3)->count() / $post->choices->count(), 2)*100}}%</div>
+            <div>特になし{{ round($post->choices->where('choiceCategory_id', 4)->count() / $post->choices->count(), 2)*100}}%</div>
+            @endif
         </div>
     </div>
     @endforeach
