@@ -10,7 +10,6 @@ class PostController extends Controller
 {
     public function latest(Request $request){
         
-        
         $keyword = $request->input('keyword');
         $query = Post::query();
         if($keyword){
