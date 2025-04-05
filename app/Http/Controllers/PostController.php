@@ -8,10 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    public function latest(){
+    public function latest(Request $request){
+        
+        
+        $keyword = $request->input('keyword');
+        $query = Post::query();
+        if($keyword){
+            $query->where('todo', 'like', "%$keyword%");
+        }
         
         $user_id = Auth::id();
-        $posts = Post::orderBy('updated_at', 'DESC')->paginate(2);
+        $posts = $query->orderBy('updated_at', 'DESC')->paginate(2)->appends(['keyword' => $keyword]);
         
         return view('posts.latest', compact('posts', 'user_id'));
     }
@@ -37,7 +44,7 @@ class PostController extends Controller
     public function bucketlist(){
         
         $user_id = auth::id();
-        $posts = Post::where('user_id', $user_id)->where('isDone', false)->orderBy('updated_at', 'DESC')->paginate(5);
+        $posts = Post::where('user_id', $user_id)->where('isDone', false)->orderBy('updated_at', 'DESC')->paginate(2);
         
         return view('posts.bucketlist', compact('posts'));
     }

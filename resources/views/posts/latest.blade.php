@@ -1,4 +1,8 @@
 <x-app-layout>
+    <form action = "/latest" method = "GET">
+        <input required type = "text" name = 'keyword' placeholder = '検索内容を記入してください' value = {{ request('keyword') }} >
+        <button type = "submit">検索</button>
+    </form>
     @foreach( $posts as $post)
     <div class="py-4 border-b border-gray-300 flex justify-center">
         <div>{{ $posts->firstItem() + $loop->index }}.{{ $post->todo }}</div>
