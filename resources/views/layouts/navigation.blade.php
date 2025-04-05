@@ -15,6 +15,9 @@
                    <x-nav-link :href="route('latest')" :active="request()->routeIs('latest')">
                     {{ __('Bucket Lists') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('popular')" :active="request()->routeIs('popular')">
+                    {{ __('人気') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('latest')" :active="request()->routeIs('latest')">
                     {{ __('最新') }}
                     </x-nav-link>
