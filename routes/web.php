@@ -26,6 +26,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/latest', [PostController::class, 'latest'])->name('latest');
 
+Route::get('/popular', [PostController::class, 'popular'])->name('popular');
+
 Route::post('/post', [PostController::class, 'post']);
 
 Route::patch('/bucketlist/{post}/done', [PostController::class, 'done'])->name('done');

@@ -22,6 +22,21 @@ class PostController extends Controller
         return view('posts.latest', compact('posts', 'user_id'));
     }
     
+    public function popular(Request $request){
+        
+        $keyword = $request->input('keyword');
+        $query = Post::query();
+        
+        if($keyword){
+            $query->where('todo', 'like', "%$keyword%");
+        }
+        
+        $user_id = Auth::id();
+        $posts = $query->withCount('likes')->orderBy('likes_count', 'DESC')->paginate(2)->appends(['keyword' => $keyword]);
+        
+        return view('posts.popular', compact('posts', 'user_id'));
+    }
+    
     public function post(Request $request){
         
         $post = new post;
