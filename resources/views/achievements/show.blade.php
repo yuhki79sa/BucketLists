@@ -12,5 +12,5 @@
     @else
     <div>感想、関連URLが存在しません。</div>
     @endif
-    <a href = "/achievement">達成リストに戻る</a>
+    <a href = "/achievement" style = "color: blue">達成リストに戻る</a>
 </x-app-layout>

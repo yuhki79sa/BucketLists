@@ -13,7 +13,12 @@ class ChoiceController extends Controller
     public function show(Post $post){
         
         $choiceCategories = choiceCategory::all();
-        return view('latests.choice', compact('post', 'choiceCategories'));
+        
+        $user_id = Auth::id();
+        $post_id = $post->id;
+        $alreadySelected = Choice::where('user_id', $user_id)->where('post_id', $post_id)->value('choiceCategory_id');
+        
+        return view('latests.choice', compact('post', 'choiceCategories', 'alreadySelected'));
     }
     
     public function save(request $request, Post $post){

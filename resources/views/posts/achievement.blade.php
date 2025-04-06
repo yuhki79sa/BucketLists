@@ -1,4 +1,8 @@
 <x-app-layout>
+    @if($posts->isEmpty())
+    <div>達成したものが見つかりません。</div>
+    <a href = "/bucketlist" style = "color: blue">やりたいことリストに戻る</a>
+    @endif
     @foreach( $posts as $post )
     <div class="py-4 border-b border-gray-300 flex justify-center">
         <div>{{ $posts->firstItem() + $loop->index }}.{{ $post->todo }}</div>
