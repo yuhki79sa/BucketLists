@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,7 @@ class CommentController extends Controller
         return view('achievements/comment', compact('post'));
     }
     
-    public function save(Request $request, Post $post){
+    public function save(PostRequest $request, Post $post){
         
         $comment = new Comment;
         $comment->user_id = Auth::id();
