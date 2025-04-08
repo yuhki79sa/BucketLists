@@ -1,6 +1,7 @@
 <x-app-layout>
+    <div>
     @if(!empty($post))
-    <div>{{ $post->todo }}</div>
+    <div class ="text-lg font-semibold">{{ $post->todo }}</div>
     <form action = "/achievement/{{ $post->id }}/save" method = "POST">
         @csrf
             <div>
