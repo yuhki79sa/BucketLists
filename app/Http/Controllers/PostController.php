@@ -17,7 +17,7 @@ class PostController extends Controller
         }
         
         $user_id = Auth::id();
-        $posts = $query->orderBy('updated_at', 'DESC')->paginate(2)->appends(['keyword' => $keyword]);
+        $posts = $query->orderBy('updated_at', 'DESC')->paginate(4)->appends(['keyword' => $keyword]);
         
         return view('posts.latest', compact('posts', 'user_id'));
     }
@@ -32,7 +32,7 @@ class PostController extends Controller
         }
         
         $user_id = Auth::id();
-        $posts = $query->withCount('likes')->orderBy('likes_count', 'DESC')->paginate(2)->appends(['keyword' => $keyword]);
+        $posts = $query->withCount('likes')->orderBy('likes_count', 'DESC')->paginate(4)->appends(['keyword' => $keyword]);
         
         return view('posts.popular', compact('posts', 'user_id'));
     }
@@ -58,7 +58,7 @@ class PostController extends Controller
     public function bucketlist(){
         
         $user_id = auth::id();
-        $posts = Post::where('user_id', $user_id)->where('isDone', false)->orderBy('updated_at', 'DESC')->paginate(2);
+        $posts = Post::where('user_id', $user_id)->where('isDone', false)->orderBy('updated_at', 'DESC')->paginate(4);
         
         return view('posts.bucketlist', compact('posts'));
     }
@@ -66,7 +66,7 @@ class PostController extends Controller
     public function achievement(){
         
         $user_id = auth::id();
-        $posts = Post::where('user_id', $user_id)->where('isDone', true)->orderBy('updated_at', 'DESC')->paginate(2);
+        $posts = Post::where('user_id', $user_id)->where('isDone', true)->orderBy('updated_at', 'DESC')->paginate(4);
         
         return view('posts.achievement', compact('posts'));
     }
