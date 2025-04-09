@@ -50,6 +50,10 @@ Route::get('post/{post}/evaluate', [ChoiceController::class, 'show']);
 
 Route::post('post/{post}/evaluate/save', [ChoiceController::class, 'save']);
 
+Route::delete('bucketlist/{post}/destroy', [PostController::class, 'destroy']);
+
+Route::delete('achievement/{post}/remove', [PostController::class, 'remove']);
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -15,6 +15,11 @@
                         @method('PATCH')
                         <input type = "submit" value = "達成" class="ml-4 bg-gray-500 text-white px-3 py-1 rounded" style="background-color: #2563eb;">
                     </form>
+                    <form action = "/bucketlist/{{ $post->id }}/destroy" method = "POST">
+                            @csrf
+                            @method('delete')
+                    <button type = "submit" class="text-white px-3 py-1 rounded ml-4" style="background-color: #dc2626;">削除</button>
+                    </form>
             </div>
         @endforeach
     

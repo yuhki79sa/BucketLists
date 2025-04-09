@@ -9,6 +9,11 @@
                 <div class ="text-lg font-semibold">{{ $posts->firstItem() + $loop->index }}.{{ $post->todo }}</div>
                 <a href = "/achievement/{{ $post->id }}/comment" class="text-white px-3 py-1 rounded" style="background-color: #2563eb;">感想</a>
                 <a href = "/achievement/{{ $post->id}}/show" class="bg-gray-500 text-white px-3 py-1 rounded">詳細</a>
+                <form action = "/achievement/{{ $post->id }}/remove" method = "POST">
+                    @csrf
+                    @method('delete')
+                <button type = "submit" class="text-white px-3 py-1 rounded" style="background-color: #dc2626;">削除</button>
+                </form>
             </div>
         @endforeach
         {{ $posts->links() }}

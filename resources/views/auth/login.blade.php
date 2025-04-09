@@ -23,6 +23,11 @@
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
+        
+        <p class="mt-4 text-center">
+            アカウントをお持ちでない方は
+            <a href="{{ route('register') }}" class="text-blue-500 underline">新規登録</a>
+        </p>
 
         <!-- Remember Me -->
         <div class="block mt-4">

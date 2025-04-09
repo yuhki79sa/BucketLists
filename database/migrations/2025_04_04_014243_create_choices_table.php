@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('choices', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id')->constrained()->ondelete('cascade');
-            $table->foreignId('post_id')->constrained()->ondelete('cascade');
-            $table->foreignId('choiceCategory_id')->constrained('choice_categories')->ondelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('post_id')->constrained()->onDelete('cascade');
+            $table->foreignId('choiceCategory_id')->constrained('choice_categories')->onDelete('cascade');
         });
     }
 
