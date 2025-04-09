@@ -76,4 +76,16 @@ class PostController extends Controller
         $comments = $post->comments;
         return view('posts.show', compact('comments', 'post'));
     }
+    
+    public function remove(Post $post){
+        
+        $post->delete();
+        return redirect('/achievement');
+    }
+    
+     public function destroy(Post $post){
+        
+        $post->delete();
+        return redirect('/bucketlist');
+    }
 }
