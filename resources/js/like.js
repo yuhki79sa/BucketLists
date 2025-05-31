@@ -25,6 +25,6 @@ for( let index = 0; index < ClickedBtns.length; index ++){
         }catch(error){
             alert("処理が失敗しました");
         } 
-    })
+    });
 
 }
